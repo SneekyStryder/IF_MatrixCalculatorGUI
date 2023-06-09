@@ -162,16 +162,14 @@ public class MatrixCalculatorGUI extends JFrame {
         }
 
         for (int i = 0; i < 3; i++) {
-            // Find the pivot element
             int pivot = rowEchelonForm[i][i];
             if (pivot == 0) {
-                // Swap rows to bring a non-zero pivot
                 int j = i + 1;
                 while (j < 3 && rowEchelonForm[j][i] == 0) {
                     j++;
                 }
                 if (j == 3) {
-                    continue; // No pivot found in this column
+                    continue;
                 }
                 int[] temp = rowEchelonForm[i];
                 rowEchelonForm[i] = rowEchelonForm[j];
@@ -179,12 +177,10 @@ public class MatrixCalculatorGUI extends JFrame {
                 pivot = rowEchelonForm[i][i];
             }
 
-            // Scale the current row
             for (int j = i; j < 3; j++) {
                 rowEchelonForm[i][j] /= pivot;
             }
 
-            // Perform row operations to eliminate elements below the pivot
             for (int j = i + 1; j < 3; j++) {
                 int factor = rowEchelonForm[j][i];
                 for (int k = i; k < 3; k++) {
